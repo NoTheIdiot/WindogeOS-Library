@@ -167,6 +167,60 @@
     io_println %1
 %endmacro
 
+%macro set_text_mode
+    mov rax, SET_TEXT_MODE
+    syscall
+%endmacro
+
+%macro set_video_mode
+    mov rax, SET_VIDEO_MODE
+    syscall
+%endmacro
+
+%macro draw_rec 5
+    mov rax, DRAW_REC
+    mov rdi, %1
+    mov rsi, %2
+    mov rdx, %3
+    mov rcx, %4
+    mov r8, %5
+    syscall
+%endmacro
+
+%macro draw_pixel 3
+    mov rax, DRAW_PIXEL
+    mov rdi, %1
+    mov rsi, %2
+    mov rdx, %3
+    syscall
+%endmacro
+
+%macro get_key_delay 1
+    mov rax, GET_KEY_DELAY
+    mov rdi, %1
+    syscall
+%endmacro
+
+%macro enable_status_bar 
+    mov rax, ENABLE_STATUS_BAR
+    syscall
+%endmacro 
+
+%macro disable_status_bar
+    mov rax, DISABLE_STATUS_BAR
+    syscall
+%endmacro
+
+%macro isbar_on
+    mov rax, IS_BAR_ON
+    syscall
+%endmacro
+
+%macro clear_raw
+    mov rax, CLEAR_RAW
+    syscall
+%endmacro
+
 %macro sys_exit 1
     process_exit %1
 %endmacro
